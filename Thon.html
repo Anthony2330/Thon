@@ -29,3 +29,58 @@
     GetData();
 </script>
 </html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+</head>... 
+</head>
+<body>
+    <h1 class ="setup"></h1>
+    <h2 class ="punchline"></h2>
+
+    <script>
+        fetch("https://official-joke-api.appspot.com/random_joke")
+        .then(respose => {
+        
+            if(!response.ok){
+                throw new Error("Something went Wrong" + response.statusText)
+            }
+            return response.json()
+        })
+        .then(jokjokjok => { 
+            console.log(jokjokjok)
+            document.querySelector(".setup").innerHTML = "Setup: " + jokjokjok.setup 
+            document.querySelector(".punchline").innerHTML ="punch line: " + jokjokjok.punchline 
+        })
+    </script>
+    </html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verzonilla</title>
+</head>
+<body>
+    <h1>Setup: <span id="set"></span></h1>
+    <br>
+    <h1>Punchline: <span id="punch"></span></h1>
+</body>
+<script type="text/javascript">
+    async function GetData(){
+        const response = await fetch("https://official-joke-api.appspot.com/random_joke");
+        const data = await response.json();
+        const {setup, punchline} = data;
+    }
+
+    document.getElementById('set').textContent=setup;
+    docuemnt.getElementById('punch').textContent=punchline;
+
+    GetData();
+</script>
+</html> 
